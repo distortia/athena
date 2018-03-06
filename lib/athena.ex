@@ -21,7 +21,7 @@ defmodule Athena do
     "46m" => "<span style='background-color: cyan;'>",
     "47m" => "<span style='background-color: lightgrey;'>",
     "90m" => "<span style='color: darkgrey;'>",
-    "91m" => "<span style='color: lightred;'>",
+    "91m" => "<span style='color: lightcoral;'>",
     "92m" => "<span style='color: lightgreen;'>",
     "93m" => "<span style='color: lightyellow;'>",
     "94m" => "<span style='color: lightblue;'>",
@@ -29,7 +29,7 @@ defmodule Athena do
     "96m" => "<span style='color: lightcyan;'>",
     "97m" => "<span style='color: white;'>",
     "100m" => "<span style='background-color: darkgrey;'>",
-    "101m" => "<span style='background-color: lightred;'>",
+    "101m" => "<span style='background-color: lightcoral;'>",
     "102m" => "<span style='background-color: lightgreen;'>",
     "103m" => "<span style='background-color: lightyellow;'>",
     "104m" => "<span style='background-color: lightblue;'>",
@@ -57,14 +57,17 @@ defmodule Athena do
 
     Background Colors
     iex> Athena.ansi_to_html("My Background is \e[42mGreen\e[0m")
+
     "My Background is <span style='background-color: green;'>Green</span>"
 
     Foreground Colors
     iex> Athena.ansi_to_html("This text is \e[91mLight red\e[0m")
-    "This text is <span style='color: lightred;'>Light red</span>"
+
+    "This text is <span style='color: lightcoral;'>Light red</span>"
 
     Kitchen sink
     iex> Athena.ansi_to_html("1 scenario (\e[31m1 failed\e[0m)\n8 steps (\e[31m1 failed\e[0m, \e[36m1 skipped\e[0m, \e[32m6 passed\e[0m)\n0m26.474s")
+
     "1 scenario (<span style='color: red;'>1 failed</span>)\n8 steps (<span style='color: red;'>1 failed</span>, <span style='color: cyan;'>1 skipped</span>, <span style='color: green;'>6 passed</span>)\n0m26.474s"
   """
   def ansi_to_html(ansi_block) do

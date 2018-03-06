@@ -1,5 +1,7 @@
 # Athena
 
+[![pipeline status](https://gitlab.com/distortia/athena/badges/master/pipeline.svg)](https://gitlab.com/distortia/athena/commits/master)
+
 An ANSI to HTML converter. Built for the usage of Cucumber output.
 
 ## Installation
