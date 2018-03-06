@@ -47,28 +47,21 @@ defmodule Athena do
   Parses an `ansi_string` and returns the HTML output.
 
   ## Examples
+    
+      iex> Athena.ansi_to_html("\e[4mfoo\e[0m")
+      "<span style='text-decoration: underline;'>foo</span>"
 
-    iex> Athena.ansi_to_html("\e[4mfoo\e[0m")
-    "<span style='text-decoration: underline;'>foo</span>"
+      iex> Athena.ansi_to_html("normal text")
+      "normal text"
 
-    It returns normal text when normal text is passed in
-    iex> Athena.ansi_to_html("normal text")
-    "normal text"
+      iex> Athena.ansi_to_html("My Background is \e[42mGreen\e[0m")
+      "My Background is <span style='background-color: green;'>Green</span>"
 
-    Background Colors
-    iex> Athena.ansi_to_html("My Background is \e[42mGreen\e[0m")
+      iex> Athena.ansi_to_html("This text is \e[91mLight Coral\e[0m")
+      "This text is <span style='color: lightcoral;'>Light Coral</span>"
 
-    "My Background is <span style='background-color: green;'>Green</span>"
-
-    Foreground Colors
-    iex> Athena.ansi_to_html("This text is \e[91mLight red\e[0m")
-
-    "This text is <span style='color: lightcoral;'>Light red</span>"
-
-    Kitchen sink
-    iex> Athena.ansi_to_html("1 scenario (\e[31m1 failed\e[0m)\n8 steps (\e[31m1 failed\e[0m, \e[36m1 skipped\e[0m, \e[32m6 passed\e[0m)\n0m26.474s")
-
-    "1 scenario (<span style='color: red;'>1 failed</span>)\n8 steps (<span style='color: red;'>1 failed</span>, <span style='color: cyan;'>1 skipped</span>, <span style='color: green;'>6 passed</span>)\n0m26.474s"
+      iex> Athena.ansi_to_html("1 scenario (\e[31m1 failed\e[0m)\n8 steps (\e[31m1 failed\e[0m, \e[36m1 skipped\e[0m, \e[32m6 passed\e[0m)\n0m26.474s")
+      "1 scenario (<span style='color: red;'>1 failed</span>)\n8 steps (<span style='color: red;'>1 failed</span>, <span style='color: cyan;'>1 skipped</span>, <span style='color: green;'>6 passed</span>)\n0m26.474s"
   """
   def ansi_to_html(ansi_block) do
     ansi_block
